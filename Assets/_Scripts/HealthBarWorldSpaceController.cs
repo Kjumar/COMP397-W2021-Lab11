@@ -8,13 +8,20 @@ public class HealthBarWorldSpaceController : MonoBehaviour
 
     void Start()
     {
-        playerCamera = GameObject.Find("PlayerCamera").transform;
+        GameObject pCam = GameObject.Find("PlayerCamera");
+        if (pCam)
+        {
+            playerCamera = pCam.transform;
+        }
     }
 
 
     void LateUpdate()
     {
         // billboard the healthBar
-        transform.LookAt(transform.position + playerCamera.forward);
+        if (playerCamera)
+        {
+            transform.LookAt(transform.position + playerCamera.forward);
+        }
     }
 }
